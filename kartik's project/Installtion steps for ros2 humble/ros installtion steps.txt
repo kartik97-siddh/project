@@ -1,0 +1,85 @@
+ros install steps
+clipbaord active...
+
+1
+locale  # check for UTF-8
+
+sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+locale  # verify settings
+
+2
+
+>> sudo apt install software-properties-common
+>> sudo add-apt-repository universe
+
+3.
+>> sudo apt update && sudo apt install curl -y
+export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}')
+curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo $VERSION_CODENAME)_all.deb" # If using Ubuntu derivates use $UBUNTU_CODENAME
+sudo dpkg -i /tmp/ros2-apt-source.deb
+
+4.
+>> sudo apt update
+
+5. 
+>> sudo apt upgrade
+
+6.
+>> sudo apt install ros-humble-desktop
+
+7.source /opt/ros/humble/setup.bash
+>> source /opt/ros/humble/setup.bash
+>> ros2 run demo_nodes_cpp talker
+
+8. 
+>> source /opt/ros/humble/setup.bash
+>> ros2 run demo_nodes_py listener
+
+
+9.  Source the setup files
+>> source /opt/ros/humble/setup.bash
+
+10. auto start source
+>> echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+
+11. test environment variables
+>> printenv | grep -i ROS
+ROS_VERSION=2
+ROS_PYTHON_VERSION=3
+ROS_DISTRO=humble 
+
+12.  Install turtlesim
+>> sudo apt update
+>> sudo apt install ros-humble-turtlesim
+
+>> ros2 pkg executables turtlesim
+turtlesim draw_square
+turtlesim mimic
+turtlesim turtle_teleop_key
+turtlesim turtlesim_node
+
+13. Start turtlesim
+
+>> ros2 run turtlesim turtlesim_node
+
+14. use turtlesim
+
+>>  Use turtlesim
+
+Note:
+You can see the nodes, and their associated topics, services, and actions, using the list subcommands of the respective commands:
+ros2 node list
+ros2 topic list
+ros2 service list
+ros2 action list
+
+15 Install rqt
+
+Open a new terminal to install rqt and its plugins:
+
+sudo apt update
+sudo apt install '~nros-humble-rqt*'

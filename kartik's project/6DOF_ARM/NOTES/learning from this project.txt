@@ -1,0 +1,73 @@
+-ROS 2 Core Concepts
+Topics, Services, Actions → how robots talk.
+
+Launch files, packages, nodes → project structure.
+
+Practical: publish angles to servos, read feedback, control joints.
+
+- Robot Description (URDF/XACRO)
+Model your arm in URDF (each link + joint).
+
+Use RViz2 to visualize your robot.
+
+Practical: define base, shoulder, elbow, wrist, gripper → 6 revolute joints.
+
+3. Transforms (TF2)
+
+Learn coordinate frames in robotics.
+
+How each joint relates in 3D space.
+
+Practical: move a joint → see the chain of transformations in RViz.
+
+4. Kinematics
+
+Forward kinematics → given joint angles, find end-effector position.
+
+Inverse kinematics (IK) → given a target position, calculate joint angles.
+
+Practical: use MoveIt 2 to automatically compute IK and plan paths.
+
+
+5. Motion Planning (MoveIt 2)
+
+Learn trajectory generation.
+
+Avoid collisions in workspace.
+
+
+6. Simulation (Gazebo / Ignition)
+
+Test your arm virtually before running real hardware.
+
+Run the same ROS 2 nodes in sim and on hardware.
+
+Practical: practice grasping tasks, automate trajectories.
+
+7. Control Framework (ros2_control)
+
+Learn how to interface hardware with ROS 2.
+
+ESP32 or Arduino → servo driver.
+
+Practical: send trajectories from MoveIt 2 → executed by your servos.
+
+8. Higher-Level Robotics
+
+Path planning (OMPL in MoveIt).
+
+Grasp planning (basic grasp libraries).
+
+Sensor integration (camera, force sensor for feedback).
+
+Practical: detect object with camera → move arm → grasp.
+
+9. Real-World Robotics Skills
+
+Hardware–software integration (ESP32 + micro-ROS).
+
+Robotics middleware (DDS in ROS 2).
+
+Simulation-to-real transfer (what you simulate → robot does in real life).
+
+These are industry skills used in automation, research, AI + robotics.

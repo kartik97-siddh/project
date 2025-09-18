@@ -1,0 +1,13 @@
+This is a ROBOTIC ARM with Arduino controlled with an application but this time we are going to be able to use it autonomously as we can save and playback the positions we record. For the construction of the feet we used a 3D printer and easily accessible components that can be found in any robotics and electrical components store. It is an interesting open source project that you can all do it.
+
+Components:
+
+SG90 servo (3)
+
+MG995/MG996R Servo (3)
+
+Arduino Uno (1)
+
+Resistor 1K (3)
+
+USB transformer
