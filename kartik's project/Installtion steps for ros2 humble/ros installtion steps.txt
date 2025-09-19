@@ -96,5 +96,7 @@ Open a terminal and start turtlesim:
 >> ros2 run turtlesim turtlesim_node
 5. Run teleop (optional, to move the turtle)
 In another terminal:
->>ros2 run turtlesim turtle_teleop_keros2 run turtlesim turtle_teleop_key
+>> ros2 run turtlesim turtle_teleop_key
+6.
+>> rviz2
 
