@@ -108,10 +108,137 @@ In another terminal:
 >> sudo apt update
 
 2.Install dependencies
->>sudo apt install python3-pip
+>> sudo apt install python3-pip
 
 3.Install micro-ROS agent
-sudo apt install ros-humble-micro-ros-agent
+>> sudo apt install ros-humble-micro-ros-agent
 
+sudo apt update && sudo apt install curl gnupg lsb-release
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | \
+  sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
+---------------------------------------------------------------
+
+used below steps for micro_ros_agent packages..
+# 1. Clean old ROS sources and keys (optional but recommended)
+sudo rm -f /etc/apt/sources.list.d/ros2.list /etc/apt/sources.list.d/ros-latest.list
+sudo rm -f /usr/share/keyrings/ros-archive-keyring.gpg
+sudo rm -f /etc/apt/trusted.gpg.d/ros*
+
+# 2. Add ROS 2 repository and keys
+sudo mkdir -p /etc/apt/keyrings
+curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | sudo tee /etc/apt/keyrings/ros-archive-keyring.gpg > /dev/null
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" \
+  | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
+sudo apt update
+
+# 3. Install ROS 2 Humble Desktop (or base)
+sudo apt install -y ros-humble-desktop
+
+# 4. Install build and micro-ROS Agent dependencies
+sudo apt install -y \
+  build-essential cmake git python3-colcon-common-extensions python3-pip python3-rosdep \
+  python3-rosinstall-generator python3-vcstool python3-argcomplete libasio-dev libtinyxml2-dev libssl-dev wget
+
+# 5. Initialize rosdep if first time
+sudo rosdep init || true
+rosdep update
+
+# 6. Setup workspace
+mkdir -p ~/microros_ws/src
+cd ~/microros_ws
+
+# 7. Clone micro-ROS Agent source
+git clone https://github.com/micro-ROS/micro_ros_agent.git src/micro_ros_agent
+
+# 8. Install dependencies for source packages
+rosdep install --from-paths src --ignore-src -r -y
+
+# 9. Build workspace
+colcon build --symlink-install
+
+# 10. Source environment
+source install/setup.bash
+source /opt/ros/humble/setup.bash
+
+# Now you can run the micro-ROS Agent:
+# e.g.
+# ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSB0
+
+CH340 USB-to-Serial Setup on Ubuntu 22.04.5 (VirtualBox)
+
+===============================
+Step-by-Step Commands That Worked
+===============================
+
+1. Check if the USB Device is Detected:
+---------------------------------------
+lsusb
+
+Expected Output:
+ID 1a86:7523 QinHeng Electronics CH340 serial converter
+
+2. Check Kernel Logs for USB Serial Driver:
+-------------------------------------------
+sudo dmesg | grep -i ch34
+
+Look for:
+ch341-uart converter now attached to ttyUSB0
+
+3. Fix Conflict: Remove brltty (causes disconnection issues with CH340)
+-----------------------------------------------------------------------
+sudo apt remove brltty
+
+Then reboot:
+sudo reboot
+
+4. Check if /dev/ttyUSB0 Exists:
+--------------------------------
+ls /dev/ttyUSB*
+
+Expected Output:
+/dev/ttyUSB0
+
+5. (Optional) Add Current User to 'dialout' Group:
+--------------------------------------------------
+sudo usermod -aG dialout $USER
+
+Then log out and log back in.
+Verify with:
+groups $USER
+
+6. (Optional) Install and Use 'screen' for Serial Communication:
+----------------------------------------------------------------
+sudo apt install screen
+
+Connect at 9600 baud (adjust if needed):
+screen /dev/ttyUSB0 9600
+
+To exit 'screen':
+Ctrl+A, then K, then Y
+
+7. (Optional) Install and Use 'minicom' for Serial Testing:
+-----------------------------------------------------------
+sudo apt install minicom
+
+Run setup:
+sudo minicom -s
+
+Set Serial Device to: /dev/ttyUSB0  
+Set Baud Rate: as needed (e.g., 9600)
+
+Start communication.
+
+===============================
+Summary
+===============================
+
+- CH340 USB-Serial detected successfully
+- brltty was causing conflict → removed
+- /dev/ttyUSB0 is now accessible
+- Use screen or minicom for serial testing
 
 
