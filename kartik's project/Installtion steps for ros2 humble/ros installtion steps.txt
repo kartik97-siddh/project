@@ -241,4 +241,9 @@ Summary
 - /dev/ttyUSB0 is now accessible
 - Use screen or minicom for serial testing
 
+#testing commands for led_control
+
+>> ros2 topic echo /led_control
+>> ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSB0
+>> ros2 topic pub /led_control std_msgs/msg/Int32 "data: 0"
 
