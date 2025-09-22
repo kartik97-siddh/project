@@ -1,0 +1,20 @@
+use serialservoconde for this testing
+
+1. motor 1 
+
+0 to 180 roatitng base motor 
+ 
+2. motor 2 
+
+0 means up arm
+180 means down side 
+
+3. motor 3 
+
+here 0 means down side
+
+180 means arm is up side
+
+
+
+

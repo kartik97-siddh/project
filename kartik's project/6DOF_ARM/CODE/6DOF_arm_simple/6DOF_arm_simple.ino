@@ -1,4 +1,4 @@
-#include 
+ #include <Servo.h>
 
 Servo servo_0; // Declaration of object to control the first servo
 Servo servo_1; // Declaration of object to control the second servo
@@ -10,12 +10,12 @@ Servo servo_6; // Declaration of object to control the seventh servo (not used i
 
 void setup() {
   Serial.begin(9600); // Initialize serial communication
-  servo_0.attach(2); // Associate servo_0 to pin 2
-  servo_1.attach(3); // Associate servo_1 to pin 3
-  servo_2.attach(4); // Associate servo_2 to pin 4
-  servo_3.attach(5); // Associate servo_3 to pin 5
-  servo_4.attach(6); // Associate servo_4 to pin 6
-  servo_5.attach(7); // Associate servo_5 to pin 7
+  servo_0.attach(3); // Associate servo_0 to pin 2
+  servo_1.attach(5); // Associate servo_1 to pin 3
+  servo_2.attach(6); // Associate servo_2 to pin 4
+  servo_3.attach(9); // Associate servo_3 to pin 5
+  servo_4.attach(10); // Associate servo_4 to pin 6
+  servo_5.attach(11); // Associate servo_5 to pin 7
   servo_6.attach(8); // Associate servo_6 to pin 8
 }
 
