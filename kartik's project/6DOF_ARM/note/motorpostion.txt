@@ -1,3 +1,8 @@
+use below pins for pwm in esp32 8 pins
+below pwm pins Are tested
+
+D2,D4,D15,D16,D17,D5,D18,D19,D21
+
 use serialservoconde for this testing
 
 1. motor 1 

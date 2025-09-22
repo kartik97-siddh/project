@@ -1,29 +1,35 @@
 #include <ESP32Servo.h>
 
-Servo myservo;  
-int angle = 0;  
+Servo myservo;
+
+const int ledPin = 2;       // LED connected to GPIO D2
+int angle = 0;               // Current servo angle
+int step = 1;                // Step for servo sweep
+unsigned long previousMillis = 0;
+const long ledInterval = 50; // Blink interval in ms
+bool ledState = LOW;
 
 void setup() {
-  Serial.begin(9600);          
-  myservo.attach(4);   // attach servo to GPIO 4
-  Serial.println("Enter angle (0 - 180):");
+  myservo.attach(21);        // Servo on GPIO 21
+  pinMode(ledPin, OUTPUT);
 }
 
 void loop() {
-  if (Serial.available() > 0) {
-    angle = Serial.parseInt();   // read integer from Serial Monitor
+  // --- Servo sweep ---
+  myservo.write(angle);
+  angle += step;
 
-    // clear leftover characters (like '\n')
-    while (Serial.available() > 0) {
-      Serial.read();
-    }
+  if (angle >= 180 || angle <= 0) {
+    step = -step; // Reverse direction at ends
+  }
 
-    // clamp values between 0 and 180
-    if (angle < 0) angle = 0;
-    if (angle > 180) angle = 180;
+  delay(20); // Keep small delay for smooth servo
 
-    myservo.write(angle);      
-    Serial.print("Servo moved to: ");
-    Serial.println(angle);
+  // --- LED blink ---
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis >= ledInterval) {
+    previousMillis = currentMillis;
+    ledState = !ledState;           // Toggle LED state
+    digitalWrite(ledPin, ledState);
   }
 }
