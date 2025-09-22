@@ -1,3 +1,6 @@
+//below pwm pins Are tested
+//D2,D4,D15,D16,D17,D5,D18,D19,D21
+
 #include <ESP32Servo.h>
 
 Servo myservo;
