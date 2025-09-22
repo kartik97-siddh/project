@@ -1,0 +1,48 @@
+Connect ESP32 to ROS2 via micro-ROS Agent
+Connect your ESP32 via USB.
+
+Identify its port:
+
+ls /dev/ttyUSB*   # or /dev/ttyACM* on Linux
+
+Run micro-ROS agent:
+
+ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSB0
+
+Test your ROS2 communication
+
+From another terminal on your PC:
+
+# Send servo angle to ESP32
+ros2 topic pub /servo_angle std_msgs/msg/Int16 "data: 90"
+
+ESP32 should glide smoothly to 90°.
+
+Try different angles (0–180).
+
+
+Step 5: Web-based GUI (optional)
+
+Install rosbridge server:
+
+sudo apt install ros-humble-rosbridge-server
+
+
+Run rosbridge:
+
+ros2 run rosbridge_server rosbridge_websocket
+
+
+Create a simple HTML file (servo_control.html) with a slider that publishes to /servo_angle (I can provide full code if you want).
+
+Open HTML in your browser → move the slider → ESP32 servo moves smoothly.
+
+Step 6: Notes for smooth operation
+
+Adjust delay(15) in ESP32 code for faster/slower glide.
+
+Ensure stable 5V power for servo.
+
+ESP32 pins for servo: 2, 4, 5, 12–19, 21–23, 25–27, 32–33
+
+Never use pins reserved for boot or flash (0, 15).
