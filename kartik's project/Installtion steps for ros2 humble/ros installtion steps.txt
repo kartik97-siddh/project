@@ -247,3 +247,11 @@ Summary
 >> ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSB0
 >> ros2 topic pub /led_control std_msgs/msg/Int32 "data: 0"
 
+ls /dev/ttyUSB*
+
+ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSB0
+
+ros2 topic pub /led_control std_msgs/msg/Int32 "{data: 1}" --once
+ros2 topic pub /led_control std_msgs/msg/Int32 "{data: 0}" --once
+ros2 topic pub /led_control std_msgs/msg/Int32 "{data: 1}"
+ros2 topic echo /led_control
