@@ -248,10 +248,30 @@ Summary
 >> ros2 topic pub /led_control std_msgs/msg/Int32 "data: 0"
 
 ls /dev/ttyUSB*
-
+source install/setup.bash
+source /opt/ros/humble/setup.bash
 ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSB0
 
 ros2 topic pub /led_control std_msgs/msg/Int32 "{data: 1}" --once
 ros2 topic pub /led_control std_msgs/msg/Int32 "{data: 0}" --once
 ros2 topic pub /led_control std_msgs/msg/Int32 "{data: 1}"
 ros2 topic echo /led_control
+
+
+===============================
+Step-by-Step Commands That Worked for gezebo installattion
+===============================
+
+sudo apt update
+sudo apt upgrade -y
+
+sudo apt install -y gazebo
+
+gazebo
+
+3. Install ROS 2 Humble integration packages
+sudo apt install -y ros-humble-gazebo-ros-pkgs ros-humble-gazebo-ros
+
+
+
+
