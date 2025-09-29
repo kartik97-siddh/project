@@ -1,0 +1,81 @@
+https://github.com/joshnewans/articubot_one.git
+https://github.com/joshnewans/articubot_one/
+
+1. Setup Your Workspace
+
+Create a ROS 2 workspace (if you don’t already have one):
+
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+
+2. Clone the Repository
+
+Clone the articubot_one package into src/:
+
+git clone https://github.com/joshnewans/articubot_one.git
+
+Now your workspace looks like:
+
+ros2_ws/
+├── src/
+│   └── articubot_one/
+
+
+3. Install Dependencies
+
+From the root of your workspace (~/ros2_ws):
+
+cd ~/ros2_ws
+rosdep update
+rosdep install --from-paths src --ignore-src -r -y
+
+4. Build the Workspace
+
+Build everything using colcon:
+
+cd ~/ros2_ws
+colcon build --symlink-install
+
+5. Source the Setup File
+
+Each time you open a new terminal, source your workspace:
+
+source ~/ros2_ws/install/setup.bash
+
+👉 To make it permanent, add this to your ~/.bashrc:
+
+echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc
+
+
+Then reload:
+
+source ~/.bashrc
+
+sudo apt update
+sudo apt install ros-humble-xacro
+
+cd ~/ros2_ws
+colcon build --symlink-install
+source install/setup.bash
+
+ros2 launch articubot_one launch_sim.launch.py
+
+sudo apt update
+sudo apt install ros-humble-twist-mux
+
+sudo apt update
+sudo apt install ros-humble-ros2-control ros-humble-ros2-controllers
+
+
+cd ~/ros2_ws
+colcon build --symlink-install
+source install/setup.bash
+sudo apt-get install ros-humble-teleop-twist-keyboard
+
+testing commmad..
+
+
+>> kartik@sidd:~/ros2_ws$ ros2 launch articubot_one launch_sim.launch.py
+>> kartik@sidd:~/ros2_ws$ ros2 launch articubot_one joystick.launch.py
+
+
