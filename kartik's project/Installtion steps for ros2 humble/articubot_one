@@ -139,3 +139,89 @@ ________________________________________
 End of setup and run steps.
 
 --------------------------------------------------------------------
+for 1-10-2025
+
+ROS2 Humble: Map Building and RViz Visualization Steps
+
+---
+
+## 1️⃣ Install necessary packages
+
+```
+sudo apt install ros-humble-slam-toolbox ros-humble-nav2-bringup
+```
+
+## 2️⃣ Launch robot in Gazebo
+
+```
+ros2 launch articubot_one launch_sim.launch.py
+```
+
+## 3️⃣ Launch SLAM node
+
+```
+ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true
+```
+
+* Builds map in real-time as robot moves
+* `use_sim_time:=true` ensures sync with Gazebo simulation
+
+## 4️⃣ Run teleop to drive robot and build the map
+
+```
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+
+* Move robot around the environment
+* SLAM builds map on the fly
+
+## 5️⃣ Save the map (after mapping)
+
+```
+ros2 run nav2_map_server map_saver_cli -f ~/ros2_ws/src/articubot_one/maps/my_map
+```
+
+* Saves `my_map.yaml` and `my_map.pgm`
+
+## 6️⃣ Load the map in RViz
+
+### Option 1: Start map server + RViz
+
+```
+ros2 launch nav2_bringup bringup_launch.py map:=$HOME/ros2_ws/src/articubot_one/maps/my_map.yaml use_sim_time:=true
+```
+
+### Option 2: Open RViz manually
+
+```
+rviz2
+```
+
+* Add **Map** display → topic `/map`
+* Add **TF** display → see robot pose
+
+## ✅ Typical workflow
+
+1. Terminal 1 → Gazebo robot:
+
+```
+ros2 launch articubot_one launch_sim.launch.py
+```
+
+2. Terminal 2 → SLAM node:
+
+```
+ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true
+```
+
+3. Terminal 3 → Teleop:
+
+```
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+
+4. Terminal 4 → RViz visualization (optional):
+
+```
+r
+```
