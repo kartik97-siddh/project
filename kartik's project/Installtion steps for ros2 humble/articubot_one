@@ -78,4 +78,64 @@ testing commmad..
 >> kartik@sidd:~/ros2_ws$ ros2 launch articubot_one launch_sim.launch.py
 >> kartik@sidd:~/ros2_ws$ ros2 launch articubot_one joystick.launch.py
 
+----------------------------------------------------------------
+----------------------------------------------------
+--------------------------------------------------------
 
+working 
+
+Articubot One - Full Setup and Run Steps
+________________________________________
+1️⃣    Clone repository
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+git clone https://github.com/joshnewans/articubot_one.git
+2️⃣   Install dependencies
+cd ~/ros2_ws
+rosdep install --from-paths src --ignore-src -r -y
+sudo apt install ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-gazebo-ros2-control ros-humble-teleop-twist-keyboard
+3️⃣ Build workspace
+colcon build --symlink-install
+source install/setup.bash
+(Optional: add to ~/.bashrc)
+echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc
+4️⃣ Check hardware interfaces
+ros2 control list_hardware_interfaces
+Should show:
+left_wheel_joint/velocity [available] [claimed]
+right_wheel_joint/velocity [available] [claimed]
+5️⃣ Fix diff_cont controller (if needed)
+Edit my_controllers.yaml in articubot_one/config/:
+diff_cont:
+  type: diff_drive_controller/DiffDriveController
+  ros__parameters:
+    left_wheel_names: ["left_wheel_joint"]
+    right_wheel_names: ["right_wheel_joint"]
+    wheel_separation: 0.15
+    wheel_radius: 0.033
+    cmd_vel_timeout: 0.25
+    publish_rate: 50
+    use_stamped_vel: false
+
+joint_broad:
+  type: joint_state_broadcaster/JointStateBroadcaster
+  ros__parameters: {}
+Then rebuild:
+colcon build --symlink-install
+source install/setup.bash
+6️⃣ Launch Gazebo simulation
+ros2 launch articubot_one launch_sim.launch.py
+Check controllers:
+ros2 control list_controllers -v
+7️⃣ Run teleop (keyboard)
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+Use keys w/a/s/d/x to move, q/z/e/c to adjust speeds, Ctrl+C to stop.
+8️⃣ Optional
+•	RViz visualization:
+ros2 launch articubot_one view_robot.launch.py
+•	Joystick teleop:
+ros2 launch articubot_one joystick.launch.py
+________________________________________
+End of setup and run steps.
+
+--------------------------------------------------------------------
