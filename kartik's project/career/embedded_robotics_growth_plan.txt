@@ -1,0 +1,49 @@
+Growth Plan for Embedded & Robotics Engineer (Kartik)
+
+----------------------------------
+1. Core Skills (Must-Have)
+----------------------------------
+- C/C++ for microcontrollers
+- RTOS basics (FreeRTOS, Zephyr)
+- Communication protocols: I2C, SPI, UART, CAN
+- Debugging with logic analyzer/oscilloscope
+- Sensors: IMU, Lidar, encoders, ToF
+- Motor drivers, power electronics basics
+- PCB design (KiCad / Altium)
+- ROS2 (Nav2, URDF, RViz, Gazebo)
+- SLAM algorithms (GMapping, Hector SLAM, Cartographer)
+
+----------------------------------
+2. Side Projects (Portfolio)
+----------------------------------
+- ESP32 + ROS2 (micro-ROS): control motors/sensors
+- DIY SLAM Robot (Jetson Nano/Raspberry Pi + Lidar)
+- Mini Autonomous Car (RC car + ESP32/Jetson Nano)
+- Custom PCB project (motor driver or sensor board)
+- Document projects on GitHub + LinkedIn
+
+----------------------------------
+3. Advanced Learning (1–2 Years)
+----------------------------------
+- Algorithms: Kalman Filter, EKF/UKF for localization
+- Computer Vision: OpenCV, Depth Cameras, Object Detection
+- AI + Robotics: ML models on embedded/edge devices (YOLO, TensorRT)
+- Cloud Robotics: MQTT, ROS2 over DDS, edge-to-cloud comms
+
+----------------------------------
+4. Career Growth Path
+----------------------------------
+- 0–2 Years: Build foundation + projects
+- 2–3 Years: Product robotics company / R&D (8–12 LPA)
+- 3–5 Years: Specialize (autonomy / embedded AI / hardware) → 15–25 LPA or abroad
+
+----------------------------------
+5. Daily Routine (After Office)
+----------------------------------
+- Weekdays (7 PM onward): 1–1.5 hrs focused learning/project
+  - Mon/Wed/Fri: coding/ROS2
+  - Tue/Thu: hardware/electronics
+- Weekends: 3–4 hrs side project + GitHub documentation
+
+----------------------------------
+Goal: In 1–2 years → top 10% robotics engineers in India.

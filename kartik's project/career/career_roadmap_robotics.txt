@@ -1,0 +1,56 @@
+Career Roadmap for Embedded & Robotics Engineer (Next 1–3 Years)
+
+--------------------------------------------------
+0–1 Year (Current Stage)
+--------------------------------------------------
+Focus:
+- Build strong base (C/C++ for embedded, ROS2 Nav2, URDF, RViz, sensor integration)
+- Create 2–3 robotics side projects (mini SLAM robot, PCB motor driver, ESP32 + micro-ROS)
+- Share projects on GitHub & LinkedIn
+
+Salary:
+- 3–5 LPA (current ~4.2 LPA)
+
+Switch Opportunity:
+- After 12 months → target 7–9 LPA in robotics/embedded companies
+
+--------------------------------------------------
+1–2 Years
+--------------------------------------------------
+Focus:
+- Advanced SLAM & Localization (Cartographer, EKF/UKF, sensor fusion)
+- Jetson/Raspberry Pi/NUC robotics projects
+- Contribute to open-source ROS2 packages
+- AI + Computer Vision (OpenCV, YOLO, TensorRT)
+- Attend robotics hackathons / conferences
+
+Salary:
+- 8–12 LPA in product robotics companies (GreyOrange, Addverb, iRobot India, startups)
+
+Switch Opportunity:
+- Strong demand for combined hardware + software + ROS2 navigation engineers
+
+--------------------------------------------------
+2–3 Years
+--------------------------------------------------
+Focus:
+- Specialize in one area:
+  1. Robotics Navigation Specialist (SLAM, Path Planning)
+  2. Embedded AI Engineer (ML on Jetson/STM32/ESP32)
+  3. Robotics Hardware + Firmware Lead (PCB, drivers, ROS2 integration)
+- Publish technical blogs/articles (LinkedIn, Medium)
+- Mentor juniors or interns
+- Consider certifications (NVIDIA Jetson AI, ROS2 Industrial, PCB design)
+
+Salary:
+- 12–18 LPA in India
+- Niche R&D roles may reach 20–25 LPA
+- International opportunities (Germany, Canada, Singapore)
+
+--------------------------------------------------
+Key Notes
+--------------------------------------------------
+- Don’t stay >2 years in a company if growth is slow
+- Portfolio > Degree → GitHub, LinkedIn, hackathons matter
+- Networking: ROS Discourse, Reddit r/robotics, meetups
+- Consistency = top 10% robotics engineers in India within 3 years

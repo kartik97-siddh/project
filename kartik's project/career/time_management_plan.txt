@@ -1,0 +1,38 @@
+Weekly Time Management Plan for Upskilling & Projects
+
+----------------------------------
+Weekday Routine (Mon–Fri)
+----------------------------------
+7:00 – 7:30 PM   → Freshen up + light dinner/snack
+7:30 – 9:00 PM   → Deep Focus Block (Upskilling/Projects)
+   - Mon/Wed/Fri: Coding / ROS2 / Algorithms
+   - Tue/Thu: Hardware / Electronics / PCB / Embedded projects
+9:00 – 9:30 PM   → Dinner / Relax / Socialize with PG friends
+9:30 – 10:30 PM  → Light Learning / Reading
+   (Tutorials, docs, notes, robotics concepts)
+10:30 – 11:00 PM → Chill (music, walk, family call)
+11:00 PM – 7:00 AM → Sleep (essential for focus)
+
+----------------------------------
+Weekend Routine
+----------------------------------
+Saturday (Project Day)
+- 9:00 AM – 12:00 PM → Side project building (robotics/PCB)
+- Afternoon → Rest + social activities
+- 7:00 PM – 10:00 PM → Debug, document progress on GitHub/LinkedIn
+
+Sunday (Recharge + Light Learning)
+- Morning → Sports/exercise/walk
+- Afternoon (2–3 hrs) → Learning (lectures, courses)
+- Evening → Relax, plan next week
+
+----------------------------------
+Tips to Stay Consistent
+----------------------------------
+- Use Pomodoro (25–30 min focus, 5 min break)
+- Track progress in Notion/Obsidian journal
+- Break projects into small goals
+- Avoid social media after office hours
+
+----------------------------------
+Goal: ~10–12 hrs of focused learning per week without burnout.
